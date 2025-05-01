@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import xmlToJson from "simple-xml-to-json";
 
 const WeatherWidget = () => {
   const [error, setError] = useState(false);
@@ -16,7 +15,7 @@ const WeatherWidget = () => {
         .then(({ data }) => {
           setLoading(false);
 
-          // console.log(data);
+          console.log(data);
 
           const {
             siteData: { currentConditions, dateTime, forecastGroup, riseSet },
