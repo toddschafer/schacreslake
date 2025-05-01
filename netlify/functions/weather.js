@@ -21,7 +21,7 @@ exports.handler = async function(event, context) {
       };
     case 'GET':
       return {
-        body: JSON.stringify(json),
+        body: json,
         headers,
         statusCode: 200,
       };
