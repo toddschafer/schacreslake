@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { InlineWidget } from 'react-calendly';
-import classNames from 'classnames'
+import React, { useEffect, useRef, useState } from "react";
+import { InlineWidget } from "react-calendly";
+import classNames from "classnames";
 
 import {
   contentIntro,
@@ -13,40 +13,44 @@ import {
   heroTextColor,
   heroTitle,
   phoneRaw,
-} from '../../cms/data';
-import {
-  items as galleryItems,
-} from '../../cms/gallery'
+} from "../../cms/data";
+import { items as galleryItems } from "../../cms/gallery";
 import Layout from "../components/Layout";
 import WeatherWidget from "../components/WeatherWidgetEnvironmentCanada";
-import styles from '../styles';
-import { imagePathToSmallImagePath } from '../utilities';
+import styles from "../styles";
+import { imagePathToSmallImagePath } from "../utilities";
 
-const Macy = typeof window !== 'undefined' ? require('macy') : null
+const Macy = typeof window !== "undefined" ? require("macy") : null;
 
 const urlify = (text) => {
-  const regex = /(https?:\/\/[^\s]+)/gi
-  return text.replace(regex, match => (
-    `<a href="${match}" target="_blank" rel="noopener noreferrer">${match}</a>`
-  ))
-}
+  const regex = /(https?:\/\/[^\s]+)/gi;
+  return text.replace(
+    regex,
+    (match) =>
+      `<a href="${match}" target="_blank" rel="noopener noreferrer">${match}</a>`
+  );
+};
 
 const emailify = (text) => {
   // eslint-disable-next-line no-useless-escape
-  const regex = /(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@[*[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+]*/gi
-  return text.replace(regex, match => `<a href="mailto:${match}">${match}</a>`)
-}
+  const regex =
+    /(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@[*[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+]*/gi;
+  return text.replace(
+    regex,
+    (match) => `<a href="mailto:${match}">${match}</a>`
+  );
+};
 
 const IndexPage = () => {
   const gallery = useRef(null);
   const [selectedImage, setSelectedImage] = useState();
 
   useEffect(() => {
-    window.document.addEventListener('keydown', handleKeydown, false);
+    window.document.addEventListener("keydown", handleKeydown, false);
 
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       const macy = new Macy({
-        container: '#gallery-container',
+        container: "#gallery-container",
         columns: 4,
         margin: {
           y: 15,
@@ -68,16 +72,16 @@ const IndexPage = () => {
     if (event.keyCode === 27) {
       setSelectedImage(null);
     }
-  }
+  };
 
   const handleClickNavbarItem = () => {
-    const burger = window.document.querySelector('.navbar-burger');
-    const menu = window.document.querySelector('.navbar-menu');
+    const burger = window.document.querySelector(".navbar-burger");
+    const menu = window.document.querySelector(".navbar-menu");
     if (burger && menu) {
-      burger.classList.remove('is-active');
-      menu.classList.remove('is-active');
+      burger.classList.remove("is-active");
+      menu.classList.remove("is-active");
     }
-  }
+  };
 
   const handleClickImage = (imageObject) => {
     setSelectedImage(imageObject);
@@ -88,11 +92,11 @@ const IndexPage = () => {
   };
 
   const handleBurgerClick = () => {
-    const burger = window.document.querySelector('.navbar-burger');
-    const menu = window.document.querySelector('.navbar-menu');
+    const burger = window.document.querySelector(".navbar-burger");
+    const menu = window.document.querySelector(".navbar-menu");
     if (burger && menu) {
-      burger.classList.toggle('is-active');
-      menu.classList.toggle('is-active');
+      burger.classList.toggle("is-active");
+      menu.classList.toggle("is-active");
     }
   };
 
@@ -101,8 +105,11 @@ const IndexPage = () => {
       <Layout>
         <section className="hero is-medium">
           <div className="hero-head">
-            
-            <nav className="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+            <nav
+              className="navbar is-fixed-top"
+              role="navigation"
+              aria-label="main navigation"
+            >
               <div className="container">
                 <div className="navbar-brand">
                   <span className="navbar-item">
@@ -122,16 +129,45 @@ const IndexPage = () => {
                 </div>
                 <div className="navbar-menu">
                   <div className="navbar-end">
-                    <a className="navbar-item" onClick={handleClickNavbarItem} href="#booking">Booking</a>
-                    <a className="navbar-item" onClick={handleClickNavbarItem} href="#pricing">Pricing</a>
-                    <a className="navbar-item" onClick={handleClickNavbarItem} href="#weather">Weather</a>
-                    <a className="navbar-item" onClick={handleClickNavbarItem} href="#location">Getting Here</a>
-                    <a className="navbar-item" onClick={handleClickNavbarItem} href="#gallery">Gallery</a>
+                    <a
+                      className="navbar-item"
+                      onClick={handleClickNavbarItem}
+                      href="#booking"
+                    >
+                      Booking
+                    </a>
+                    <a
+                      className="navbar-item"
+                      onClick={handleClickNavbarItem}
+                      href="#pricing"
+                    >
+                      Pricing
+                    </a>
+                    <a
+                      className="navbar-item"
+                      onClick={handleClickNavbarItem}
+                      href="#weather"
+                    >
+                      Weather
+                    </a>
+                    <a
+                      className="navbar-item"
+                      onClick={handleClickNavbarItem}
+                      href="#location"
+                    >
+                      Getting Here
+                    </a>
+                    <a
+                      className="navbar-item"
+                      onClick={handleClickNavbarItem}
+                      href="#gallery"
+                    >
+                      Gallery
+                    </a>
                   </div>
                 </div>
               </div>
             </nav>
-
           </div>
 
           <div
@@ -141,7 +177,6 @@ const IndexPage = () => {
             }}
           >
             <div className="container">
-
               <h1
                 className="title"
                 style={heroTextColor ? { color: heroTextColor } : {}}
@@ -197,8 +232,10 @@ const IndexPage = () => {
           <div className="container content">
             <h2>Pricing:</h2>
             <div
-              dangerouslySetInnerHTML={{ __html: emailify(urlify(contentPricing)) }}
-              style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}
+              dangerouslySetInnerHTML={{
+                __html: emailify(urlify(contentPricing)),
+              }}
+              style={{ whiteSpace: "pre-wrap", wordBreak: "break-word" }}
             />
           </div>
         </section>
@@ -225,13 +262,12 @@ const IndexPage = () => {
               scrolling="no"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2429.9132120632153!2d-113.76414954852592!3d52.48070707970767!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x53750426db5f53b1%3A0x959a09c11b0842c7!2sSchacres%20Lake!5e0!3m2!1sen!2sca!4v1618178132883!5m2!1sen!2sca"
               style={{
-                border: 'none',
-                height: '300px',
-                width: '100%',
+                border: "none",
+                height: "300px",
+                width: "100%",
               }}
               title="Google Maps View"
             />
-
           </div>
         </section>
 
@@ -241,34 +277,33 @@ const IndexPage = () => {
             <h2>Gallery</h2>
 
             <div id="gallery-container" className="gallery-container">
-              {galleryItems.map(({
-                image: galleryItemImageSrc,
-                title: galleryItemTitle,
-              }) => (
-                <div
-                  className="gallery-item"
-                  key={galleryItemTitle}
-                  onClick={() => {
-                    handleClickImage({
-                      src: galleryItemImageSrc,
-                      title: galleryItemTitle,
-                    })
-                  }}
-                >
-                  <img
-                    className="gallery-item-image"
-                    src={imagePathToSmallImagePath(galleryItemImageSrc)}
-                    alt={galleryItemTitle}
-                  />
-                </div>
-              ))}
+              {galleryItems.map(
+                ({ image: galleryItemImageSrc, title: galleryItemTitle }) => (
+                  <div
+                    className="gallery-item"
+                    key={galleryItemTitle}
+                    onClick={() => {
+                      handleClickImage({
+                        src: galleryItemImageSrc,
+                        title: galleryItemTitle,
+                      });
+                    }}
+                  >
+                    <img
+                      className="gallery-item-image"
+                      src={imagePathToSmallImagePath(galleryItemImageSrc)}
+                      alt={galleryItemTitle}
+                    />
+                  </div>
+                )
+              )}
             </div>
 
             {selectedImage && (
               <div
                 className={classNames(
-                  'modal',
-                  selectedImage ? 'is-active' : null,
+                  "modal",
+                  selectedImage ? "is-active" : null
                 )}
               >
                 <div
@@ -289,7 +324,6 @@ const IndexPage = () => {
                 />
               </div>
             )}
-
           </div>
         </section>
 
@@ -297,15 +331,6 @@ const IndexPage = () => {
           <div className="content has-text-centered">
             <div>
               <span>© Schacres Lake</span>
-              <span> - </span>
-              <a
-                href="https://digital89.com"
-                title="Website by Digital89"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Website by <strong>Digital89</strong>
-              </a>
             </div>
           </div>
         </footer>

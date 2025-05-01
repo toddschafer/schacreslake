@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "description": "schacreslake website",
-  "author": "Digital89",
+  "author": "Todd Schafer",
   "scripts": {
     "dev": "gatsby develop",
     "start": "gatsby develop",
