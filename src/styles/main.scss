@@ -1,0 +1,101 @@
+html,
+body {
+  font-size: 14px;
+
+  @include tablet {
+    font-size: 16px;
+  }
+
+  @include desktop {
+    font-size: 18px;
+  }
+}
+
+body {
+  overflow: visible !important;
+}
+
+.section-invisible {
+  height: 0;
+  margin-top: -4.5rem;
+  padding-top: 4.5rem;
+}
+
+.section-1 {
+  background-color: #e7eaea;
+}
+
+.section-2 {
+  background-color: #555555;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: white;
+  }
+}
+
+.hero .navbar {
+  background: white;
+  border-bottom: 1px solid gray;
+}
+
+.navbar-item img {
+  max-height: 2.5rem;
+}
+
+.hero-body {
+  // background-image: url(/images/example.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.hero-contact-button:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  font-size: 3rem;
+  // color: #fff !important;
+}
+
+.subtitle {
+  font-size: 2rem;
+  // color: #fff !important;
+}
+
+.weather-current {
+  font-size: 1.25rem;
+}
+
+.weather-card {
+  height: 100%;
+}
+.weather-card-icon {
+  height: 3rem;
+  width: 3rem;
+  position: absolute;
+  right: 1.5rem;
+  top: 1.5rem;
+}
+
+.gallery-container {
+  margin-top: 2rem;
+}
+
+.gallery-item {
+  border-radius: 4px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.gallery-item-image {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+.modal-title {
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}

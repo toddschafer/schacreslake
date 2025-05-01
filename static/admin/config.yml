@@ -1,0 +1,47 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: static/images/uploads
+public_folder: /images/uploads
+
+display_url: https://schacreslake.com
+logo_url: https://schacreslake.com/images/logo-brand.png
+
+collections:
+  - name: "content"
+    label: "Content"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - name: "data"
+        label: "Data"
+        file: "cms/data.json"
+        fields:
+          - { name: "domainName", label: "Domain Name", widget: "string" }
+          - { name: "email", label: "Email", widget: "string" }
+          - { name: "phone", label: "Phone Number", widget: "string" }
+          - { name: "phoneRaw", label: "Phone Number Raw", widget: "string" }
+          - { name: "seoDescription", label: "SEO Description", widget: "text" }
+          - { name: "seoTitle", label: "SEO Title", widget: "string" }
+          - { name: "heroTitle", label: "Hero Title", widget: "string" }
+          - { name: "heroSubtitle", label: "Hero Subtitle", widget: "string" }
+          - { name: "heroCallUsButtonText", label: "Hero Call Us Button Text", widget: "string" }
+          - { name: "heroEmailUsButtonText", label: "Hero Email Us Button Text", widget: "string" }
+          - { name: "heroBackgroundImage", label: "Hero Background Image", widget: "image" }
+          - { name: "heroTextColor", label: "Hero Text Colour", widget: "color" }
+          - { name: "contentIntro", label: "Content Intro", widget: "text" }
+          - { name: "contentPricing", label: "Content Pricing", widget: "text" }
+      
+      - name: "gallery"
+        label: "Gallery"
+        file: "cms/gallery.json"
+        fields:
+          - name: "items"
+            label: "Gallery Items"
+            label_singular: "Gallery Item"
+            widget: "list"
+            fields:
+              - { name: "title", label: "Gallery Item Title", widget: "string" }
+              - { name: "image", label: "Gallery Item Image", widget: "image" }

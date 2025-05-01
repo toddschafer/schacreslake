@@ -1,0 +1,20 @@
+{
+    "name": "Schacres Lake",
+    "short_name": "Schacres Lake",
+    "description": "Waterskiing in Lacombe, Alberta",
+    "theme_color": "#D3D3D3",
+    "background_color": "#D3D3D3",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
