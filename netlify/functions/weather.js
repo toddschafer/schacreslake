@@ -9,7 +9,7 @@ const headers = {
 
 exports.handler = async function(event, context) {
   const { data } = await axios.get('https://dd.weather.gc.ca/citypage_weather/xml/AB/s0000297_e.xml');
-  const json = convertXmlToJson(data);
+  const json = convertXmlToJson(data, { compact: true });
 
   switch (event.httpMethod) {
     case 'OPTIONS':
