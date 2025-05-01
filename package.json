@@ -28,7 +28,7 @@
     "react-dom": "16.13.1",
     "react-helmet": "6.1.0",
     "sass": "1.32.6",
-    "simple-xml-to-json": "1.2.3"
+    "xml-js": "1.6.11"
   },
   "devDependencies": {
     "glob": "7.1.6",

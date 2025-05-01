@@ -1,5 +1,5 @@
 const axios = require('axios');
-const {convertXML} = require('simple-xml-to-json')
+const convertXmlToJson = require('xml-js');
 
 const headers = {
   'Access-Control-Allow-Origin': '*',
@@ -9,7 +9,7 @@ const headers = {
 
 exports.handler = async function(event, context) {
   const { data } = await axios.get('https://dd.weather.gc.ca/citypage_weather/xml/AB/s0000297_e.xml');
-  const json = convertXML(data);
+  const json = convertXmlToJson(data);
 
   switch (event.httpMethod) {
     case 'OPTIONS':
