@@ -15,41 +15,41 @@ const WeatherWidget = () => {
         .then(({ data }) => {
           setLoading(false);
 
-          console.log(data);
+          // console.log("=== here", data);
 
           const {
             siteData: { currentConditions, dateTime, forecastGroup, riseSet },
           } = data;
           const dateTimeObj = dateTime?.[1];
           const date = new Date(
-            `${dateTimeObj?.month?.name} ${dateTimeObj?.day?.$t}, ${dateTimeObj?.year}`
+            `${dateTimeObj?.month?._attributes?.name} ${dateTimeObj?.day?._text}, ${dateTimeObj?.year?._text}`
           );
 
           setWeatherData({
             current: {
-              dewpoint: currentConditions?.dewpoint?.$t,
-              humidity: currentConditions?.relativeHumidity?.$t,
-              pressure: currentConditions?.pressure?.$t,
-              sunrise: `${riseSet?.dateTime[1]?.hour}:${riseSet?.dateTime[1]?.minute}`,
-              sunset: `${riseSet?.dateTime[3]?.hour}:${riseSet?.dateTime[3]?.minute}`,
-              temperature: currentConditions?.temperature?.$t,
-              windDirection: currentConditions?.wind?.direction?.$t,
-              windGust: currentConditions?.wind?.gust?.$t || 0,
-              windSpeed: currentConditions?.wind?.speed?.$t,
+              dewpoint: currentConditions?.dewpoint?._text,
+              humidity: currentConditions?.relativeHumidity?._text,
+              pressure: currentConditions?.pressure?._text,
+              sunrise: `${riseSet?.dateTime[1]?.hour?._text}:${riseSet?.dateTime[1]?.minute?._text}`,
+              sunset: `${riseSet?.dateTime[3]?.hour?._text}:${riseSet?.dateTime[3]?.minute?._text}`,
+              temperature: currentConditions?.temperature?._text,
+              windDirection: currentConditions?.wind?.direction?._text,
+              windGust: currentConditions?.wind?.gust?._text || 0,
+              windSpeed: currentConditions?.wind?.speed?._text,
             },
             daily: forecastGroup?.forecast?.map((day, index) => {
               const newDate = new Date(date);
               newDate.setDate(newDate.getDate() + index);
-
               return {
-                iconFormat: day?.abbreviatedForecast?.iconCode?.format,
-                iconNumber: day?.abbreviatedForecast?.iconCode?.$t,
-                forecastName: day?.period?.textForecastName,
-                humidity: day?.relativeHumidity?.$t,
-                summary: day?.textSummary,
-                temperature: day?.temperatures?.temperature?.$t,
-                uvSummary: day?.uv?.textSummary,
-                windSummary: day?.winds.textSummary,
+                iconFormat:
+                  day?.abbreviatedForecast?.iconCode?._attributes?.format,
+                iconNumber: day?.abbreviatedForecast?.iconCode?._text,
+                forecastName: day?.period?._attributes?.textForecastName,
+                humidity: day?.relativeHumidity?._text,
+                summary: day?.textSummary._text,
+                temperature: day?.temperatures?.temperature?._text,
+                uvSummary: day?.uv?.textSummary?._text,
+                windSummary: day?.winds?.textSummary?._text,
               };
             }),
           });
@@ -59,8 +59,8 @@ const WeatherWidget = () => {
     }
   }, []);
 
-  const { current, daily, timeStamp } = weatherData;
-  console.log({ current, daily, timeStamp });
+  const { current, daily } = weatherData;
+  console.log("Weather data:", { current, daily });
 
   if (loading) {
     return <div>Loading...</div>;
@@ -166,11 +166,11 @@ const WeatherWidget = () => {
         <div style={{ color: "white" }}>
           <span>Weather source: </span>
           <a
-            href="https://weather.gc.ca/city/pages/ab-39_metric_e.html"
+            href="https://dd.weather.gc.ca/citypage_weather/xml/AB/s0000297_e.xml"
             style={{ color: "white", textDecoration: "underline" }}
             target="_blank"
           >
-            https://weather.gc.ca/city/pages/ab-39_metric_e.html
+            https://dd.weather.gc.ca/citypage_weather/xml/AB/s0000297_e.xml
           </a>
         </div>
       </div>
