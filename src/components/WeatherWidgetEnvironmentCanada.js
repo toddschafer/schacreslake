@@ -10,12 +10,6 @@ const WeatherWidget = () => {
   useEffect(async () => {
     setLoading(true);
 
-    const { data } = await axios.get(
-      "https://dd.weather.gc.ca/citypage_weather/xml/AB/s0000297_e.xml"
-    );
-    const json = xmlToJson.toJson(data);
-    console.log("=== weather data:", json);
-
     try {
       axios
         .get("https://schacreslakev2.netlify.app/.netlify/functions/weather")
