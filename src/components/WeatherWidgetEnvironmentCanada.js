@@ -18,7 +18,7 @@ const WeatherWidget = () => {
 
     try {
       axios
-        .get("https://www.schacreslake.com/.netlify/functions/weather")
+        .get("https://schacreslakev2.netlify.app/.netlify/functions/weather")
         .then(({ data }) => {
           setLoading(false);
 
