@@ -1,6 +1,6 @@
 backend:
   name: git-gateway
-  branch: main
+  branch: master
 
 media_folder: static/images/uploads
 public_folder: /images/uploads
@@ -27,13 +27,29 @@ collections:
           - { name: "seoTitle", label: "SEO Title", widget: "string" }
           - { name: "heroTitle", label: "Hero Title", widget: "string" }
           - { name: "heroSubtitle", label: "Hero Subtitle", widget: "string" }
-          - { name: "heroCallUsButtonText", label: "Hero Call Us Button Text", widget: "string" }
-          - { name: "heroEmailUsButtonText", label: "Hero Email Us Button Text", widget: "string" }
-          - { name: "heroBackgroundImage", label: "Hero Background Image", widget: "image" }
-          - { name: "heroTextColor", label: "Hero Text Colour", widget: "color" }
+          - {
+              name: "heroCallUsButtonText",
+              label: "Hero Call Us Button Text",
+              widget: "string",
+            }
+          - {
+              name: "heroEmailUsButtonText",
+              label: "Hero Email Us Button Text",
+              widget: "string",
+            }
+          - {
+              name: "heroBackgroundImage",
+              label: "Hero Background Image",
+              widget: "image",
+            }
+          - {
+              name: "heroTextColor",
+              label: "Hero Text Colour",
+              widget: "color",
+            }
           - { name: "contentIntro", label: "Content Intro", widget: "text" }
           - { name: "contentPricing", label: "Content Pricing", widget: "text" }
-      
+
       - name: "gallery"
         label: "Gallery"
         file: "cms/gallery.json"
